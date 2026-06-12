@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Feliz Dia dos Namorados! ❤️</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="lyrics-container">
+      <div id="lyrics-wrapper"></div>
+    </div>
+
+    <div id="welcome-screen">
+      <button id="start-btn">Clique aqui, e aumente o som ❤️</button>
+    </div>
+
+    <div id="loveboard-container">
+        
+        <div id="love-message" style="display: none;">te amo minha princesa</div>
+
+        <button id="music-btn" class="music-paused">
+          <span id="music-btn-icon">♫</span>
+        </button>
+
+        <canvas id="pinkboard"></canvas>
+
+        <div id="photo-center">
+          <img class="foto-galeria" src="/src/img/mkold.jpg" alt="Foto 1" />
+          <img class="foto-galeria" src="/src/img/mk2.jpg" alt="Foto 8" style="display: none" />
+          <img class="foto-galeria" src="/src/img/vld.jpg" alt="Foto 9" style="display: none" />
+          <img class="foto-galeria" src="/src/img/vld2.jpg" alt="Foto 10" style="display: none" />
+          <img class="foto-galeria" src="/src/img/mk4.jpg" alt="Foto 11" style="display: none" />
+          <img class="foto-galeria" src="/src/img/mk7.jpg" alt="Foto 12" style="display: none" />
+          <img class="foto-galeria" src="/src/img/mk1.jpg" alt="Foto 13" style="display: none" />
+          <img class="foto-galeria" src="/src/img/mk3.jpg" alt="Foto 14" style="display: none" />
+        </div>
+
+        <h1 id="namorados-text">
+          <br />Feliz Dia dos Namorados!
+          <span id="touch-hint">(Toque no coração para mudar as fotos)</span>
+        </h1>
+
+    </div> <audio id="love-song" src="/src/music/musica.MP3"></audio>
+
+    <script src="script.js"></script>
+  </body>
+</html>

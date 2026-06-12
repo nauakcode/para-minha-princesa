@@ -1,0 +1,340 @@
+/* Reset geral de margens e forças de background */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* 1. Força o fundo de toda a página a ser PRETO ABSOLUTO */
+html, body {
+    width: 100%;
+    height: 100%;
+    background-color: #000000 !important;
+    background: #000000 !important;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-family: 'Georgia', serif;
+}
+
+/* Tela de início para liberar o áudio */
+#welcome-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000000 !important;
+    background: #000000 !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+
+#start-btn {
+    padding: 18px 32px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #fff;
+    background: linear-gradient(45deg, rgba(255, 50, 100, 0.6), rgba(255, 50, 100, 0.6));
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 0 20px rgba(255, 0, 85, 0.6);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    outline: none;
+}
+
+#start-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px rgba(255, 0, 85, 0.9);
+}
+
+/* Container principal (Coração e Foto) em fundo preto absoluto */
+#loveboard-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #000000 !important;
+    background: #000000 !important;
+}
+
+#pinkboard {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: auto; /* MUDADO DE none PARA auto PARA PODER CAPTURAR O RANGE DO CLIQUE */
+}
+/* 2. Foto Centralizada - Mantém o tamanho e a proporção original da foto real de vocês */
+#photo-center {
+    position: absolute;
+    z-index: 10;
+    height: 230px;        
+    width: auto;          
+    aspect-ratio: auto;   
+    top: 45%; 
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0); 
+    border-radius: 12px;  
+    box-shadow: 0 0 25px rgba(255, 50, 100, 0.75), 0 0 10px rgba(255, 50, 100, 0.4);
+    overflow: hidden;
+    background: transparent !important;
+    background-color: transparent !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+#photo-center img {
+    height: 100%;
+    width: auto;          
+    object-fit: contain !important; 
+    background: transparent !important;
+}
+
+.pulse-active {
+    animation: pulse-photo 4s ease-in-out infinite;
+}
+
+@keyframes pulse-photo {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); box-shadow: 0 0 20px rgba(255, 50, 100, 0.8); }
+    50% { transform: translate(-50%, -50%) scale(1.04); box-shadow: 0 0 32px rgba(255, 50, 100, 1), 0 0 12px rgba(255, 255, 255, 0.4); }
+}
+
+/* Ajusta o "Feliz Dia dos Namorados!" (Com brilho neon suave e tom rosado) */
+#namorados-text {
+    position: fixed !important;
+    top: 60px;          
+    bottom: auto;       
+    width: 100%;
+    left: 0;
+    font-size: 2.2rem;  
+    font-weight: bold;
+    padding: 0 15px;
+    text-align: center;
+    z-index: 30;        
+    color: #ffe6ec !important; 
+    text-shadow: 0 0 8px rgba(255, 50, 100, 0.6), 
+                 0 0 20px rgba(255, 50, 100, 0.4), 
+                 0 0 35px rgba(255, 50, 100, 0.2) !important;
+}
+
+/* Botão de Play/Pause Flutuante alinhado à Esquerda */
+#music-btn {
+    position: fixed;
+    top: 30px;
+    left: 30px; 
+    z-index: 25; 
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: 2px solid #ff3264;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #ff3264;
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 15px rgba(255, 50, 100, 0.4);
+    transition: all 0.3s ease;
+    opacity: 0; 
+    pointer-events: none;
+    outline: none;
+}
+
+/* Botão de Reiniciar Flutuante - Estilo idêntico ao de música */
+#reset-btn {
+    position: fixed;
+    top: 90px; 
+    left: 30px; 
+    z-index: 25; 
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: 2px solid #ff3264;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #ff3264;
+    font-size: 1.4rem;
+    cursor: pointer;
+    display: none; 
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 15px rgba(255, 50, 100, 0.4);
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+#music-btn:hover, #reset-btn:hover {
+    transform: scale(1.08);
+    background-color: #ff3264;
+    color: #fff;
+    box-shadow: 0 0 20px rgba(255, 50, 100, 0.8);
+}
+
+#reset-btn:hover {
+    transform: scale(1.08) rotate(180deg);
+}
+
+#music-btn.music-playing {
+    animation: pulse-border 2s infinite;
+}
+
+@keyframes pulse-border {
+    0% { box-shadow: 0 0 0 0 rgba(255, 50, 100, 0.7); }
+    70% { box-shadow: 0 0 0 10px rgba(255, 50, 100, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 50, 100, 0); }
+}
+
+/* CONTAINER DAS LETRAS (Estilo Spotify na Esquerda) */
+#lyrics-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 35%; 
+    height: 100vh;
+    background: transparent !important;
+    background-color: transparent !important;
+    z-index: 15;
+    display: flex;
+    align-items: center; 
+    padding-left: 50px;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 1.5s ease;
+    overflow: hidden;
+}
+
+#lyrics-wrapper {
+    width: 100%;
+    position: relative;
+    height: 100%; 
+    display: flex;
+    align-items: center; 
+    justify-content: flex-start;
+}
+
+.lyric-line {
+    position: absolute; 
+    font-size: 1.8rem; 
+    font-weight: bold;
+    line-height: 1.4;
+    color: #fff;
+    text-shadow: 0 0 15px rgba(255, 50, 100, 0.6);
+    width: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0.95);
+    transition: opacity 0.5s ease, transform 0.5s ease, visibility 0.5s;
+    transform-origin: left;
+}
+
+.lyric-line.active {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1.05);
+}
+
+/* Responsividade para Celulares */
+@media (max-width: 850px) {
+    #namorados-text {
+        position: fixed !important;
+        top: 60px;          
+        font-size: 1.8rem;  
+    }
+
+    #lyrics-container {
+        position: fixed !important;
+        width: 100% !important;
+        height: 100px !important;
+        top: auto !important;
+        bottom: 80px !important; 
+        left: 0 !important;
+        right: 0 !important;
+        z-index: 30 !important;  
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        padding: 0 20px !important;
+    }
+
+    #lyrics-wrapper {
+        width: 100% !important;
+        height: 100% !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        text-align: center !important;
+    }
+
+    .lyric-line {
+        position: absolute !important;
+        width: 100% !important;
+        text-align: center !important;
+        font-size: 1.4rem;  
+        transform-origin: center !important;
+    }
+
+    #photo-center {
+        height: 185px !important;    
+        top: 45% !important;         
+        border: none !important;
+        box-shadow: 0 -10px 15px rgba(255, 50, 100, 0.6), 
+                    0 10px 15px rgba(255, 50, 100, 0.6) !important; 
+    }
+
+    #photo-center img {
+        height: 100% !important;
+        object-fit: contain !important;
+    }
+/* Mensagem de instrução logo abaixo do título */
+#touch-hint {
+    display: block; /* Força o texto a ir para a linha de baixo */
+    margin-top: 15px; /* Cria um espaço perfeito entre o título e a dica */
+    font-size: 1rem;
+    font-style: italic;
+    font-weight: normal; /* Deixa a letra mais fina que o título para contrastar */
+    color: rgba(255, 230, 236, 0.6); /* Tom rosado elegante e discreto */
+    text-shadow: none; /* Remove o brilho forte do título para ficar legível */
+    animation: pulse-text 2.5s ease-in-out infinite;
+}
+
+/* Efeito pisca-pisca suave */
+@keyframes pulse-text {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 0.8; }
+}
+
+/* Ajuste rápido para o celular */
+@media (max-width: 850px) {
+    #touch-hint {
+        font-size: 0.85rem;
+        margin-top: 10px;
+    }
+    /* Garante que a mensagem de amor fique visível, centralizada e acima de tudo */
+#love-message {
+    position: fixed !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    font-size: 1.6rem;
+    font-family: 'Georgia', serif;
+    color: #ffe6ec !important;
+    text-shadow: 0 0 15px rgba(255, 50, 100, 1), 0 0 5px rgba(255, 255, 255, 0.8) !important;
+    text-align: center;
+    width: auto;
+    white-space: nowrap;
+    line-height: 1.5;
+    z-index: 999999 !important; /* Camada máxima absoluta */
+}
+}
